@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
-import { CLIENT_ID } from '../redux/actions/types';
+import { CLIENT_ID } from '../config.js';
 
 class SignIn extends Component {
   render() {

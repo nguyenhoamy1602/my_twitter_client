@@ -1,3 +1,5 @@
+import { URL } from '../../config.js';
+
 export const GET_TWEET_LIST = 'get_tweet_list';
 export const ADD_TWEET = 'add_tweet_to_tweet_list';
 export const UPDATE_TWEET = 'update_tweet';
@@ -6,9 +8,6 @@ export const NEW_TOAST = 'new_toast';
 export const CLEAR_TOAST = 'clear_toast';
 export const TOKEN = "eyJhbGciOiJIUzI1NiIsImlhdCI6MTUzMDUxMDIzMywiZXhwIjoxNTMxNzE5ODMzfQ.eyJpZCI6IlVzZXI6MSIsIm5hbWUiOiJOZ3V5ZW4gSG9hIE15In0.Ly_7n37O4F-E-Khtku567Roj8PadP4LwuXCIymiLyds";
 
-export const URL = "http://my.aws.prd.demodesu.com:50022/api";
-// export const URL = "http://0.0.0.0:50022/api";
-export const CLIENT_ID = "683428721122-qspko4c4t0noa0cdjveockut5clgg634.apps.googleusercontent.com";
 export const TWEET_URL = URL + "/tweet/"
 export const AUTH_URL = URL + "/auth/"
 

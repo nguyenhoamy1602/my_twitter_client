@@ -57,7 +57,7 @@ class TweetCard extends Component {
     const tweet = this.props.tweet;
     return (
       <div className="card">
-      {this.props.auth.isAuthenticated && this.props.auth.user.name == this.props.tweet.user ?
+      {this.props.auth.isAuthenticated && this.props.auth.user.name === this.props.tweet.user ?
         <button
           className="btn btn-clear tooltip"
           data-tooltip="Delete because tweet has been captured."
@@ -69,7 +69,7 @@ class TweetCard extends Component {
           </figure>
           <h4 className="card-title">{tweet.user}</h4>
         </div>
-        {this.props.auth.isAuthenticated && this.props.auth.user.name == this.props.tweet.user ?
+        {this.props.auth.isAuthenticated && this.props.auth.user.name === this.props.tweet.user ?
         <Note
           toggleEdit={this.toggleEdit}
           updateTweet={this.handleUpdateTweet}
