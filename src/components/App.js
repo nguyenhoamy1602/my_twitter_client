@@ -91,36 +91,59 @@ class App extends Component {
     this.props.addTweet(tweet);
     this.clearFormAndCloseModal();
   }
-
+  
   handleLogin(response) {
     this.props.signIn(response);
     this.clearFormAndCloseLogin();
   }
-
+  
   handleLogout() {
     this.props.logOut();
   }
-
+  
   handleClearToast() {
     this.props.clearToast();
   }
-
+  
   renderLoginButton() {
     if (this.props.auth.isAuthenticated) {
-        return (<button
+      return (
+        <div className="classWithPad">
+        
+        <h4> Welcome {this.props.auth.user.name}!
+        </h4>
+        
+        <div className="columns">
+        <div className="column col-md-12">
+        <button
         className="btn btn-right"
+        onClick={this.toggleModalState}>Post a Tweet
+        </button>
+        <button
+        className="btn btn-right classWithPad"
         onClick={this.handleLogout}> Log Out
         </button>
-        );
+        
+        </div>
+        </div>
+        </div>
+      );
     } else {
-      return (<button
+      return (
+        <div className="classWithPad">
+        <h4>
+          Welcome Guest!
+        </h4>
+        <button
         className="btn btn-right"
         onClick={this.toggleLoginState}> Sign In
         </button>
-        );
-    }
-}
 
+        </div>
+      );
+    }
+  }
+  
   render() {
     return (
       <div className="App container">
@@ -130,64 +153,61 @@ class App extends Component {
         message={this.props.toast} />
         : null}
         <div className="card-container">
+        
+        {this.renderLoginButton()}
         <div className="columns">
         <div className="column col-md-6">
         <h2>
         Recent Tweets:
-        {this.props.auth.isAuthenticated ? <button
-        className="btn btn-right"
-        onClick={this.toggleModalState}>Post a Tweet</button>
-        : null}
-        </h2>
-        
-        {this.renderUsers()}
-        </div>
-        <div className="column col-md-6">
-        {this.renderLoginButton()}
-        <UserList />
-        </div>
-        </div>
-        </div>
-        
-        <AddTweet
-        createTweet={this.handleTweetCreation}
-        addToTweetList={this.handleTweetCreation}
-        onNewTweet={this.handleNewTweetChange}
-        onNewImage={this.handleNewImage}
-        text={this.state.newTweet}
-        open={this.state.openModal}
-        close={this.toggleModalState}/>
-        
-        <SignIn
-        logIn={this.handleLogin}
-        open={this.state.openLogin}
-        close={this.toggleLoginState}
-        isAuthenticated={this.props.auth.isAuthenticated}
-        logOut={this.handleLogout}/>
-        </div>
-      );
+          </h2>
+          
+          {this.renderUsers()}
+          </div>
+          <div className="column col-md-6">
+          <UserList />
+          </div>
+          </div>
+          </div>
+          
+          <AddTweet
+          createTweet={this.handleTweetCreation}
+          addToTweetList={this.handleTweetCreation}
+          onNewTweet={this.handleNewTweetChange}
+          onNewImage={this.handleNewImage}
+          text={this.state.newTweet}
+          open={this.state.openModal}
+          close={this.toggleModalState}/>
+          
+          <SignIn
+          logIn={this.handleLogin}
+          open={this.state.openLogin}
+          close={this.toggleLoginState}
+          isAuthenticated={this.props.auth.isAuthenticated}
+          logOut={this.handleLogout}/>
+          </div>
+        );
+      }
     }
-  }
-
-  //connects root reducer to props
-  function mapStateToProps(state) {
-    return {
-      recentTweets: state.recentTweets,
-      toast: state.toast,
-      auth: state.auth
+    
+    //connects root reducer to props
+    function mapStateToProps(state) {
+      return {
+        recentTweets: state.recentTweets,
+        toast: state.toast,
+        auth: state.auth
+      }
     }
-  }
-  
-  //connects redux actions to props
-  function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-      getTweetList: getTweetList,
-      addTweet: addTweet,
-      clearToast: clearToast,
-      signIn: signIn,
-      logOut: logOut
-    }, dispatch);
-  }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(App);
-  
+    
+    //connects redux actions to props
+    function mapDispatchToProps(dispatch) {
+      return bindActionCreators({
+        getTweetList: getTweetList,
+        addTweet: addTweet,
+        clearToast: clearToast,
+        signIn: signIn,
+        logOut: logOut
+      }, dispatch);
+    }
+    
+    export default connect(mapStateToProps, mapDispatchToProps)(App);
+    
