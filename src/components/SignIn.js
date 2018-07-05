@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
+import { CLIENT_ID } from '../redux/actions/types';
 
 class SignIn extends Component {
   render() {
@@ -18,7 +19,7 @@ class SignIn extends Component {
         <div className="modal-body">
         <div className="content">
         <GoogleLogin
-        clientId="683428721122-827iq5r635c420f8cnjfnnm8u1gq34jn.apps.googleusercontent.com"
+        clientId={CLIENT_ID}
         buttonText="Login with Google"
         onSuccess={response => this.props.logIn(response.profileObj)}
         onFailure={response => console.log(response)}
