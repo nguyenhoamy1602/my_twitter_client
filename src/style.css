@@ -40,8 +40,18 @@
 .avatar {
   margin: 1.5rem  2.5rem  1.5rem  0;
 }
-.btn-right {
+
+.btn-login {
   display: inline;
+  flex-direction: row-reverse;
+  border-radius: 5%;
+  padding: 0px;
+  padding-right: .5em;
+  padding-left: .5em;
+  margin: .5em;
+}
+.btn-right {
+  display: flex;
   flex-direction: row-reverse;
   padding: .1rem;
 }
@@ -106,6 +116,11 @@ textarea.form-input {
 .new-avatar-container .avatar.avatar-xl img {
   width: 64px;
   height: 64px;
+}
+
+.background {
+  background-image: url("../public/images/background.png");
+  background-color: #cccccc;
 }
 
 

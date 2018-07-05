@@ -11,6 +11,7 @@ import SignIn from './SignIn';
 import Toast from './Toast';
 import LoadingSpinner from './LoadingSpinner';
 import {signIn, logOut} from '../redux/actions/sign_in';
+import Background from './Background';
 
 class App extends Component {
   constructor(props) {
@@ -108,7 +109,7 @@ class App extends Component {
   renderLoginButton() {
     if (this.props.auth.isAuthenticated) {
       return (
-        <div className="classWithPad">
+        <div className="classWithPad background">
         
         <h4> Welcome {this.props.auth.user.name}!
         </h4>
@@ -116,11 +117,11 @@ class App extends Component {
         <div className="columns">
         <div className="column col-md-12">
         <button
-        className="btn btn-right"
+        className="btn btn-login"
         onClick={this.toggleModalState}>Post a Tweet
         </button>
         <button
-        className="btn btn-right classWithPad"
+        className="btn btn-login"
         onClick={this.handleLogout}> Log Out
         </button>
         
@@ -130,12 +131,12 @@ class App extends Component {
       );
     } else {
       return (
-        <div className="classWithPad">
+        <div className="classWithPad background">
         <h4>
           Welcome Guest!
         </h4>
         <button
-        className="btn btn-right"
+        className="btn btn-login"
         onClick={this.toggleLoginState}> Sign In
         </button>
 
@@ -153,7 +154,6 @@ class App extends Component {
         message={this.props.toast} />
         : null}
         <div className="card-container">
-        
         {this.renderLoginButton()}
         <div className="columns">
         <div className="column col-md-6">
@@ -185,6 +185,7 @@ class App extends Component {
           isAuthenticated={this.props.auth.isAuthenticated}
           logOut={this.handleLogout}/>
           </div>
+          
         );
       }
     }
