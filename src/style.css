@@ -123,6 +123,9 @@ textarea.form-input {
   background-color: #cccccc;
 }
 
+.was-validated .form-control:valid~.invalid-feedback {
+  display: none;
+}
 
 @media screen and (max-width: 700px) {
   .card {

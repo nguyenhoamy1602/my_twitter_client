@@ -3,6 +3,7 @@ import { AUTH_URL, SET_CURRENT_USER, LOG_OUT_USER } from './types';
 
 
 export function signIn(profileObj) {
+  console.log(profileObj);
   return dispatch => {
     axios.post(AUTH_URL, profileObj)
       .then(res => {
@@ -13,7 +14,8 @@ export function signIn(profileObj) {
 
 function getTokenAsync(response) {
   return dispatch => {
-    localStorage.setItem('api-token', response.token);
+    sessionStorage.setItem('api-token', response.token);
+    sessionStorage.setItem('user', JSON.stringify(response.user));
     setAuthorizationToken(response.token);
     console.log(response);
     dispatch(setCurrentUser(response.user));
@@ -32,7 +34,8 @@ export function setAuthorizationToken(token) {
 
 export function logOut() {
   return dispatch => {
-    localStorage.removeItem('api-token');
+    sessionStorage.removeItem('api-token');
+    sessionStorage.removeItem('user');
     setAuthorizationToken(false);
     dispatch(logOutUser());
   }

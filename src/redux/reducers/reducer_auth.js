@@ -1,4 +1,5 @@
 import { SET_CURRENT_USER, LOG_OUT_USER } from '../actions/types';
+import { setAuthorizationToken } from '../actions/sign_in';
 
 const DEFAULT_STATE = {
   isAuthenticated: false,
@@ -14,9 +15,25 @@ export default (state = DEFAULT_STATE, action) => {
         user: action.user
       };
     case LOG_OUT_USER:
-      return DEFAULT_STATE;
+      return {
+        isAuthenticated: false,
+        user: {}
+      };
     default:
-      return state;
+      let token = sessionStorage.getItem('api-token');
+      let user = sessionStorage.getItem('user');
+      if (!token || token === '' || !user || user === '')
+        return state;
+      else {
+        setAuthorizationToken(token);
+        let user = JSON.parse(sessionStorage.getItem('user'));
+        console.log("User:" + user.name);
+        return {
+          isAuthenticated: true,
+          user: user
+        };
+      }
+
   }
 }
 
