@@ -155,7 +155,7 @@ class App extends Component {
         : null}
         <div className="card-container">
         {this.renderLoginButton()}
-        <div className="columns">
+        <div className="columns row">
         <div className="column col-md-6">
         <h2>
         Recent Tweets:

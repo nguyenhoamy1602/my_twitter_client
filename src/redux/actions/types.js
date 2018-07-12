@@ -10,6 +10,7 @@ export const TOKEN = "eyJhbGciOiJIUzI1NiIsImlhdCI6MTUzMDUxMDIzMywiZXhwIjoxNTMxNz
 
 export const TWEET_URL = URL + "/tweet/"
 export const AUTH_URL = URL + "/auth/"
+export const USER_URL = URL + "/user/"
 
 export const SET_CURRENT_USER = 'set_current_user';
 export const LOG_OUT_USER = "log_out_user";

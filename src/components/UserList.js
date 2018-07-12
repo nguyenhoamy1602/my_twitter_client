@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { UserCard } from './UserCard';
 
 class UserList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    follow: false
+  }
+  }
+  followUser(user) {
+    console.log(user);
+    this.setState({
+      follow: !this.state.follow
+    })
+  }
+
+
   renderUsers() {
     if(this.props.recentTweets) {
       return this.props.recentTweets.map(r => {
+        console.log(r);
         return (
-          <div key={r.user} className="card">
-            <div className="card-body">
-              <p>{r.user}</p>
-            </div>
-          </div>
+          <UserCard user = {r}/>
         );
       });
     }
   }
+
+
   render() {
     return (
       <div>
-        <h2>User List:</h2>
+        <h2>Users:</h2>
         {this.renderUsers()}
       </div>
     );

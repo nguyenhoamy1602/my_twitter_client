@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ImageUploader from 'react-images-upload';
 
 export class AddTweet extends Component {
   constructor(props) {
@@ -7,12 +8,19 @@ export class AddTweet extends Component {
     formIsValid: true,
     tweet: this.props.newTweet,
     image: this.props.newImage,
-    errors: {}
+    errors: {},
+    pictures: []
   }
   this.handleValidation = this.handleValidation.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
+  this.onDrop = this.onDrop.bind(this);
 }
 
+onDrop(pictureFiles, pictureDataURLs) {
+  this.setState({
+          pictures: this.state.pictures.concat(pictureFiles),
+      });
+    }
   handleValidation() {
     let errors = {};
     let valid = true;
@@ -66,8 +74,15 @@ export class AddTweet extends Component {
                 ) : null }
                    <span className="error">{this.state.errors["tweet"]}</span>
                 </div>
-                <div>
-                  </div>
+                {/* <div>
+                <ImageUploader
+                	withIcon={true}
+                	buttonText='Choose images'
+                	onChange={this.props.onNewImage}
+                	imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                	maxFileSize={5242880}
+            />
+                  </div> */}
                 <div className="form-group">
                   <label className="form-label">Attached an image!</label>
                   <input

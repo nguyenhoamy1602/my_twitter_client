@@ -1,4 +1,4 @@
-import { GET_TWEET_LIST, TWEET_URL, TOKEN } from './types';
+import { GET_TWEET_LIST, TWEET_URL } from './types';
 import axios from 'axios';
 
 
@@ -6,10 +6,7 @@ import axios from 'axios';
 
 export default function getTweetList() {
   return dispatch => {
-    axios.get(TWEET_URL,
-  { headers: {
-    "api-token": TOKEN
-  }})
+    axios.get(TWEET_URL)
       // axios.get(URL + '/tweet')
       .then(res => {
         console.log('Tweet list ::', res.data);

@@ -13,6 +13,7 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^15.3.2",
     "react-google-login": "^3.2.1",
+    "react-images-upload": "^1.1.99",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
