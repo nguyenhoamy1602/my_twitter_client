@@ -133,7 +133,7 @@ class App extends Component {
       return (
         <div className="classWithPad background">
         <h4>
-          Welcome Guest!
+          Welcome My Friend!
         </h4>
         <button
         className="btn btn-login"
